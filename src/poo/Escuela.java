@@ -6,7 +6,6 @@ import java.util.Objects;
 * Armando Ibarraran
 * 04/Feb/2022
 * Esta clase modela una escuela con un arreglo de alumnos
-* Está hecha conforma las indicaciones de la maesra Silvia Guardati
 */
 
 public class Escuela {

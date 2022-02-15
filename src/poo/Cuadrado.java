@@ -6,49 +6,19 @@ package poo;
 * Esta clase modela un rectanglo
 */
 
-public class Cuadrado {
+public class Cuadrado extends Cuadrilátero{
     private double lado;
 
     public Cuadrado() {
+        super();
     }
 
     public Cuadrado(double lado) {
-        this.lado = lado;
-    }
-
-    public void setLado(double lado) {
+        super(lado);
         this.lado = lado;
     }
 
     public double getLado() {
         return lado;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Cuadrado other = (Cuadrado) obj;
-        return Double.doubleToLongBits(this.lado) == Double.doubleToLongBits(other.lado);
-    }
-
-    @Override
-    public String toString() {
-        return "Cuadrado{" + "lado=" + lado + '}';
-    }
-    
-    public double calculaArea() {
-        return lado*lado;
-    }
-    
-    public double calculaPerimetro() {
-        return 4*lado;
     }
 }

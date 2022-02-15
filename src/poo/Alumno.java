@@ -4,7 +4,6 @@ package poo;
 * Armando Ibarraran
 * 04/Feb/2022
 * Esta clase modela un alumno
-* Está hecha conforma las indicaciones de la maesra Silvia Guardati
 */
 
 public class Alumno {

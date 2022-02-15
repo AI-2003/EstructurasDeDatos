@@ -1,21 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package poo;
 
-/**
- *
- * @author carlo
- */
-public class Rectangulo {
+/*
+* Armando Ibarraran
+* 09/Feb/2022
+* Esta es una clase para representar un rectángulo
+* Está hecha conforma las enseñanzas de la maestra Silvia Guardati
+*/
+
+public class Rectangulo extends Cuadrilátero{
     private double base;
     private double altura;
 
     public Rectangulo() {
+        super();
     }
 
     public Rectangulo(double base, double altura) {
+        super(base,altura);
         this.base = base;
         this.altura = altura;
     }
@@ -27,32 +28,4 @@ public class Rectangulo {
     public double getAltura() {
         return altura;
     }
-
-    public void setBase(double base) {
-        this.base = base;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Rectangulo other = (Rectangulo) obj;
-        if (Double.doubleToLongBits(this.base) != Double.doubleToLongBits(other.base)) {
-            return false;
-        }
-        return Double.doubleToLongBits(this.altura) == Double.doubleToLongBits(other.altura);
-    }
-    
-    
 }
