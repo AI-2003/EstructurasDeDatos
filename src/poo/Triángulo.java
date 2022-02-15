@@ -47,26 +47,23 @@ public class Triángulo implements FigGeométrica{
     public double calculaPerím() {
         return lado1+lado2+lado3;
     }
+    
+    public boolean esEquilátero() {
+        return lado1==lado2 && lado1==lado3;
+    }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Triángulo other = (Triángulo) obj;
-        if (Double.doubleToLongBits(this.lado1) != Double.doubleToLongBits(other.lado1)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.lado2) != Double.doubleToLongBits(other.lado2)) {
-            return false;
-        }
-        return Double.doubleToLongBits(this.lado3) == Double.doubleToLongBits(other.lado3);
+        boolean res;
+        Triángulo otro;
+        
+        res=false;
+        if(obj != null && obj instanceof Triángulo){
+            otro=(Triángulo) obj;
+            if(otro.lado1==this.lado1 && otro.lado2==this.lado2 && otro.lado3==this.lado3)
+                res=true;
+        }            
+        return res;
     }
 
     @Override

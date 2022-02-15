@@ -8,8 +8,6 @@ package poo;
 */
 
 public class Rectangulo extends Cuadrilátero{
-    private double base;
-    private double altura;
 
     public Rectangulo() {
         super();
@@ -17,15 +15,11 @@ public class Rectangulo extends Cuadrilátero{
 
     public Rectangulo(double base, double altura) {
         super(base,altura);
-        this.base = base;
-        this.altura = altura;
     }
-
-    public double getBase() {
-        return base;
-    }
-
-    public double getAltura() {
-        return altura;
+    
+    
+    public double calculaÁrea(){
+        
+        return this.getLado1()*this.getLado2();
     }
 }

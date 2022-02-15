@@ -37,9 +37,7 @@ public abstract class Cuadrilátero implements FigGeométrica{
         this.lado4 = lado4;
     }
     
-    public double calculaÁrea(){
-        return lado1*lado2;
-    }
+    public abstract double calculaÁrea();
     
     public double calculaPerím(){
         return lado1+lado2+lado3+lado4;
@@ -63,26 +61,16 @@ public abstract class Cuadrilátero implements FigGeométrica{
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+        boolean res;
+        Cuadrilátero otro;
+        
+        res=false;
+        if(obj!=null && obj instanceof Cuadrilátero){
+            otro=(Cuadrilátero) obj;
+            if(otro.lado1==this.lado1 && otro.lado2==this.lado2 && otro.lado3==this.lado3 && otro.lado4==this.lado4)
+                res=true;
         }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Cuadrilátero other = (Cuadrilátero) obj;
-        if (this.lado1 != other.lado1) {
-            return false;
-        }
-        if (this.lado2 != other.lado2) {
-            return false;
-        }
-        if (this.lado3 != other.lado3) {
-            return false;
-        }
-        return this.lado4 == other.lado4;
+        return res;
     }
 
     @Override

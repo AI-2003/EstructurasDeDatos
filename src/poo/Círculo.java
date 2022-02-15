@@ -23,17 +23,13 @@ public class Círculo implements FigGeométrica{
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Círculo other = (Círculo) obj;
-        return Double.doubleToLongBits(this.radio) == Double.doubleToLongBits(other.radio);
+        boolean res;
+        
+        if(obj!=null && obj instanceof Círculo && ((Círculo)obj).radio==this.radio)
+            res=true;
+        else
+            res=false;
+        return res;
     }
 
     @Override
@@ -47,6 +43,16 @@ public class Círculo implements FigGeométrica{
         
         return Math.PI*2*radio;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("C\u00edrculo{");
+        sb.append("radio=").append(radio);
+        sb.append('}');
+        return sb.toString();
+    }
+    
     
     
 }

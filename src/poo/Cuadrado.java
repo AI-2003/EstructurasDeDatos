@@ -3,11 +3,10 @@ package poo;
 /*
 * Armando Ibarraran
 * 30/Ene/2022
-* Esta clase modela un rectanglo
+* Esta clase modela un cuadrado
 */
 
 public class Cuadrado extends Cuadrilátero{
-    private double lado;
 
     public Cuadrado() {
         super();
@@ -15,10 +14,12 @@ public class Cuadrado extends Cuadrilátero{
 
     public Cuadrado(double lado) {
         super(lado);
-        this.lado = lado;
     }
-
-    public double getLado() {
-        return lado;
+    
+    @Override
+    public double calculaÁrea(){
+        
+        return this.getLado1()*this.getLado1();
     }
+    //Falta equals y area
 }
