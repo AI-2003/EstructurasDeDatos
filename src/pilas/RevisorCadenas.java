@@ -6,14 +6,9 @@ package pilas;
 * Esta clase confirma que una cadena tenga el mismo número de paréntesis que abren y cierran
 */
 
-public class RevisorParentesis {
-    private String cadena;
+public class RevisorCadenas {
     
-    public RevisorParentesis(String cadena){
-        this.cadena=cadena;
-    }
-    
-    public boolean analisisParentesis(){
+    public static boolean analisisParentesis(String cadena){
         PilaA pila;
         boolean res;
         int i;
@@ -32,7 +27,11 @@ public class RevisorParentesis {
                         pila.pop();
             i++;
         }
-        return res;
+        return res && pila.isEmpty();
     }
     
+    public static void main(String[] args){
+        
+        System.out.println(analisisParentesis("(((("));
+    }
 }
