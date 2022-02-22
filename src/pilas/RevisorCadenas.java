@@ -30,8 +30,16 @@ public class RevisorCadenas {
         return res && pila.isEmpty();
     }
     
-    public static void main(String[] args){
+    public static String invierteCadena(String cadenaInicial){
+        PilaA pila;
+        StringBuilder cadenaInvertida;
         
-        System.out.println(analisisParentesis("(((("));
+        pila=new PilaA();
+        cadenaInvertida=new StringBuilder();
+        for(int i=0; i<cadenaInicial.length(); i++)
+            pila.push(cadenaInicial.charAt(i));
+        while(!pila.isEmpty())
+            cadenaInvertida.append(pila.pop());
+        return cadenaInvertida.toString();
     }
 }
