@@ -18,11 +18,10 @@ public class PilaA <T> implements PilaADT<T>{
 
     @Override
     public void push(T dato) {
-        if(tope!=this.datosPila.length-1) { //Pila esá llena
+        if(tope==this.datosPila.length-1) //Pila esá llena
             expand();
-            tope++;
-            datosPila[tope]=dato;
-        }
+        tope++;
+        datosPila[tope]=dato;
     }
         
     private void expand(){
