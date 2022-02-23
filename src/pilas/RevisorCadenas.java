@@ -3,7 +3,7 @@ package pilas;
 /*
 * Armando Ibarraran
 * 21/Feb/2022
-* Esta clase confirma que una cadena tenga el mismo número de paréntesis que abren y cierran
+* Esta clase maneja cadenas con pilas
 */
 
 public class RevisorCadenas {
