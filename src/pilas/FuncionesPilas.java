@@ -1,4 +1,7 @@
 package pilas;
+
+import java.util.ArrayList;
+
 /*
 * Armando Ibarraran
 * 23/Feb/2022
@@ -21,16 +24,12 @@ public class FuncionesPilas {
         return len;
     }
     
-    public static void invierte(PilaA pila){
-        PilaA helper1, helper2;
+    public static <T> void invierte(PilaA<T> pila){
+        ArrayList <T> elementos = new ArrayList(); 
         
-        helper1=new PilaA();
-        helper2=new PilaA();
         while(!pila.isEmpty())
-            helper1.push(pila.pop());
-        while(!helper1.isEmpty())
-            helper2.push(helper1.pop());
-        while(!helper2.isEmpty())
-            pila.push(helper2.pop());
+            elementos.add(pila.pop());
+        for(int i=0; i<elementos.size(); i++)
+            pila.push(elementos.get(i));        
     }
 }
