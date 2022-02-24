@@ -21,12 +21,16 @@ public class FuncionesPilas {
         return len;
     }
     
-    public static PilaA invierte(PilaA pila){
-        PilaA invertida;
+    public static void invierte(PilaA pila){
+        PilaA helper1, helper2;
         
-        invertida=new PilaA();
+        helper1=new PilaA();
+        helper2=new PilaA();
         while(!pila.isEmpty())
-            invertida.push(pila.pop());
-        return invertida;
+            helper1.push(pila.pop());
+        while(!helper1.isEmpty())
+            helper2.push(helper1.pop());
+        while(!helper2.isEmpty())
+            pila.push(helper2.pop());
     }
 }
