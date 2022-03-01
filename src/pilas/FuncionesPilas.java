@@ -73,24 +73,22 @@ public class FuncionesPilas {
             pila.push(arr[i]);
     }
     
-    public static void main(String[] args){
-        PilaA p=new PilaA();
+    private static String intToBin(int num){
+        String res;
+        PilaA pila;
         
-        p.push(1);
-        p.push(2);
-        p.push(3);
-        p.push(4);
-        p.push(1);
-        p.push(5);
-        p.push(6);
-        p.push(3);
-        p.push(7);
-        p.push(2);
-        
-        System.out.println(length(p));
-        quitaRepetidos(p);
-        System.out.println(length(p));
-        System.out.println(p.peek());
-        
+        res="";
+        pila=new PilaA();
+        while(num>0){
+            pila.push(num%2);
+            num/=2;
+        }
+        while(!pila.isEmpty())
+            res+=pila.pop();
+        return res;
+    }
+    
+     public static void main(String[] args){
+        System.out.println(intToBin(31));
     }
 }
