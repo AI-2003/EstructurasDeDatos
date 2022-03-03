@@ -66,4 +66,26 @@ public class PilaA <T> implements PilaADT<T>{
         return str.toString();
     }
     
+    public boolean equals(Object obj){
+        boolean res;
+        PilaADT<T> a, b, other;
+        
+        res=false;
+        if(obj instanceof PilaADT){
+            a=new PilaA();
+            b=new PilaA();
+            other=(PilaA) obj;
+            while(!other.isEmpty() && !isEmpty() && other.peek().equals(peek())){
+                a.push(other.pop());
+                a.push(pop());
+            }
+            if(other.isEmpty() && isEmpty())
+                res=true;
+            while(!a.isEmpty()){
+                push(a.pop());
+                other.push(a.pop());
+            }
+        }
+        return res;
+    }
 }

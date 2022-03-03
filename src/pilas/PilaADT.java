@@ -12,5 +12,6 @@ public interface PilaADT <T> {
     public T pop();
     public boolean isEmpty();
     public T peek();
-    
+    @Override
+    public boolean equals(Object obj);
 }
