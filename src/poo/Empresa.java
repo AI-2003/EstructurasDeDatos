@@ -96,7 +96,7 @@ public class Empresa {
     }
     
     //Pendiente
-    private int buscaEmpleado(Empleado e){
+    /* private int buscaEmpleado(Empleado e){
         int ini, fin, pos;
         
         ini=0;
@@ -119,7 +119,7 @@ public class Empresa {
         }else
             res=false;
         return res;
-    }
+    } */
     
     
 }

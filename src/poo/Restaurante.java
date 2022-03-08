@@ -96,7 +96,7 @@ public class Restaurante {
         double res=0;
         
         for(int i=0; i<numMesas; i++)
-            res+=mesas[i].calculaArea();
+            res+=mesas[i].calculaÁrea();
         return res;
     }
     
@@ -104,7 +104,7 @@ public class Restaurante {
         double res=0;
         
         for(int i=0; i<numMesas; i++)
-            res+=mesas[i].calculaPerimetro();
+            res+=mesas[i].calculaPerím();
         return res;
     }
 }
