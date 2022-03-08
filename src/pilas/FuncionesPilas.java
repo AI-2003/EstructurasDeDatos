@@ -88,7 +88,23 @@ public class FuncionesPilas {
         return res;
     }
     
-     public static void main(String[] args){
-        System.out.println(intToBin(31));
+    public static boolean esPalindromo(String s){
+        PilaA pila1, pila2;
+        boolean res;
+        
+        pila1=new PilaA();
+        pila2=new PilaA();
+        for(int i=0; i<s.length()/2; i++){
+            pila1.push(s.charAt(i));
+            pila2.push(s.charAt(s.length()-1-i));
+        }
+        res=pila1.equals(pila2);
+        return res;
     }
+    
+     public static void main(String[] args){
+        System.out.println(esPalindromo("reconocer"));
+    }
+     
+     
 }

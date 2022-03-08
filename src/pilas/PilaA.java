@@ -71,7 +71,7 @@ public class PilaA <T> implements PilaADT<T>{
         PilaADT<T> a, b, other;
         
         res=false;
-        if(obj instanceof PilaADT){
+        if(obj!=null && obj.getClass().equals(this.getClass())){
             a=new PilaA();
             b=new PilaA();
             other=(PilaA) obj;
