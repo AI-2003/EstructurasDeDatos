@@ -1,5 +1,7 @@
 package recursivos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Armando Ibarrarán
@@ -103,11 +105,31 @@ public class MetodosRecusrivos {
             return fibs[n];
     }
     
+    public static <T> ArrayList primerosN(T[] arr, int tot, int n){
+        ArrayList list;
+        
+        if(arr.length==0 || tot<0 || n<0){
+            throw new RuntimeException("Parámetros inválidos");
+        }
+        list=new ArrayList();
+        return primerosN(arr, tot, n-1, list);
+    }
+    
+    private static <T> ArrayList primerosN(T[] arr, int tot, int n, ArrayList list) {
+        if(n==0)
+            list.add(arr[n]);
+        else{
+            primerosN(arr, tot, n-1, list);
+            list.add(arr[n]);
+        }
+        return list;
+    }
+    
     
     
     public static void main(String[] args){
-        Integer[][] mat = {{1,1,1,1,1},{1,2,3,4,5},{1,1,1,1,1}};
+        Integer[] arr={1,2,3,4,5,6,7,8,9,10};
         
-        System.out.println(fib(8));
+        System.out.println(primerosN(arr, 10, 8).toString());
     }
 }
