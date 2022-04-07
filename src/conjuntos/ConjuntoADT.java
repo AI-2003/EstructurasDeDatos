@@ -14,6 +14,7 @@ public interface ConjuntoADT <T> {
     public boolean estaVacio();
     public String toString();
     public ConjuntoADT<T> union(ConjuntoADT<T> otro);
+    public ConjuntoADT<T> interseccion(ConjuntoADT<T> otro);
     public Iterator<T> iterator();
     
     //Faltan métodos

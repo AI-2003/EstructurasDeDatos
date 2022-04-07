@@ -35,8 +35,8 @@ public class ConjuntoA <T> implements ConjuntoADT<T>{
     
     public boolean contiene(T dato){
         
-        //Con recursividad
-        //return contiene(dato, 0);
+        //Con recursividad: 
+        //  return contiene(dato, 0);
         return busSec(dato)>0;
     }
     
@@ -80,8 +80,8 @@ public class ConjuntoA <T> implements ConjuntoADT<T>{
         
         aux = (T[]) new Object[coleccion.length*2];
         
-        //Con recursividad
-        //expande(aux, 0);
+        //Con recursividad:
+        //  expande(aux, 0);
         for(int i=0; i<cardinalidad; i++)
             aux[i]=coleccion[i];
         coleccion=aux;
@@ -94,14 +94,70 @@ public class ConjuntoA <T> implements ConjuntoADT<T>{
             expande(arr, indx+1);
         }
     }
-
-    @Override
-    public ConjuntoADT<T> union(ConjuntoADT<T> otro) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public String toString(){
+        StringBuilder str;
+        
+        str=new StringBuilder();    
+        return toString(0, str);
+    }
+    
+    private String toString(int indx, StringBuilder str){
+        if(indx<cardinalidad){
+            str.append(coleccion[indx]).append("\n");
+            return toString(indx+1,str);
+        }
+        else
+            return str.toString();
     }
 
-    @Override
+    public ConjuntoADT<T> union(ConjuntoADT<T> otro) {
+        ConjuntoA<T> conjUnion = new ConjuntoA(this.cardinalidad);
+        
+        copiaArreglo(0, conjUnion);
+        Iterator<T> it=otro.iterator();
+        while(it.hasNext())
+            conjUnion.agrega(it.next());
+        return conjUnion;
+    }
+    
+    private void copiaArreglo(int i, ConjuntoA<T> conjUnion) {
+        
+        if(i<cardinalidad){
+            conjUnion.coleccion[i]=coleccion[i];
+            copiaArreglo(i+1, conjUnion);
+        }
+    }
+    
+    public ConjuntoADT<T> interseccion(ConjuntoADT<T> otro){
+        ConjuntoA<T> conjInter;
+        
+        if(this.cardinalidad<otro.getCardinalidad()){
+            conjInter=new ConjuntoA(this.cardinalidad);
+            interseccion(this.iterator(), otro, conjInter);
+        }else{
+            conjInter=new ConjuntoA(otro.getCardinalidad());
+            interseccion(otro.iterator(), this, conjInter);
+        }
+        return conjInter;
+    }
+    
+    private void interseccion(Iterator<T> it, ConjuntoADT<T> conj, ConjuntoA<T> conjInter){
+        T obj;
+        int i;
+        
+        i=0;
+        while(it.hasNext()){
+            obj=it.next();
+            if(conj.contiene(obj)){
+                conjInter.coleccion[i]=obj;
+                i++;
+            }
+        }
+        conjInter.cardinalidad = i;
+    }
+
     public Iterator<T> iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new IteradorArreglo(coleccion, cardinalidad);
     }
 }
