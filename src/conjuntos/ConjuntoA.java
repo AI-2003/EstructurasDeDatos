@@ -75,6 +75,26 @@ public class ConjuntoA <T> implements ConjuntoADT<T>{
         return res;
     }
     
+    public T elimina(T dato){
+        T res;
+        int pos;
+        
+        pos=busSec(dato);
+        if(pos>=0){
+            res=coleccion[pos];
+            corrimientoIzq(pos);
+            cardinalidad--;
+        }else
+            res=null;
+        return res;
+    }
+    
+    private void corrimientoIzq(int pos){
+        
+        for(int i=pos; i<cardinalidad-1; i++)
+            coleccion[i]=coleccion[i+1];
+    }
+    
     private void expande(){
         T[] aux;
         
@@ -155,6 +175,24 @@ public class ConjuntoA <T> implements ConjuntoADT<T>{
             }
         }
         conjInter.cardinalidad = i;
+    }
+    
+    public ConjuntoADT<T> diferencia(ConjuntoADT<T> otro){
+        ConjuntoA<T> conjDif = new ConjuntoA(this.cardinalidad);
+        
+        diferencia(0, otro, conjDif);
+        return conjDif;
+    }
+    
+    private void diferencia(int i, ConjuntoADT<T> otro, ConjuntoA<T> conjDif){
+        
+        if(i<cardinalidad){
+            if(!otro.contiene(this.coleccion[i])){
+                conjDif.coleccion[conjDif.cardinalidad]=this.coleccion[i];
+                conjDif.cardinalidad++;
+            }
+            diferencia(i+1, otro, conjDif);
+        }
     }
 
     public Iterator<T> iterator() {
