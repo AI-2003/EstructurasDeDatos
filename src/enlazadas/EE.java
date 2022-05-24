@@ -17,24 +17,28 @@ public class EE <T> implements Iterable<T>{
         return primero == null;
     }
     
-    public void agregaInicio(T nuevoDato){
-        Nodo<T> nuevoNodo = new Nodo(nuevoDato);
-        nuevoNodo.setDir(primero);
-        primero = nuevoNodo;
+    public void agregaInicio(T dato){
+        Nodo<T> nodo;
+        
+        nodo = new Nodo(dato);
+        nodo.setDir(primero);
+        primero = nodo;
     }
     
     
-    public void agregaFinal(T nuevoDato){
-        Nodo<T> nuevoNodo = new Nodo(nuevoDato);
+    public void agregaFinal(T dato){
+        Nodo<T> nodo, temp;
+        
+        nodo = new Nodo(dato);
         if(this.isEmpty()){
-            primero=nuevoNodo;
+            primero=nodo;
         }
         else{
-            Nodo<T> temporal = primero;
-            while(temporal.getDir() != null){
-                temporal = temporal.getDir();        
+            temp = primero;
+            while(temp.getDir() != null){
+                temp = temp.getDir();        
             }
-            temporal.setDir(nuevoNodo);
+            temp.setDir(nodo);
         }
     }
     
@@ -160,6 +164,32 @@ public class EE <T> implements Iterable<T>{
             }
         }
         return res;
+    }
+    
+    public void mezclaNodos(EE otra){
+        Nodo<T> act1, act2, aux1, aux2;
+        
+        if(otra==null)
+            throw new EmptyCollectionException("Parámetros incorrectos");
+        if(this.isEmpty())
+            primero=otra.primero;
+        else{
+            act1=primero;
+            act2=otra.primero;
+            aux1=act1.getDir();
+            aux2=act2.getDir();
+            while(aux1!=null && act2!=null){
+                aux1=act1.getDir();
+                aux2=act2.getDir();
+                act1.setDir(act2);
+                act2.setDir(aux1);
+                act1.setDir(aux1);
+                act2.setDir(aux2);
+            }
+            if(aux1==null){
+                act1.setDir(act2);
+            }
+        }
     }
     
     public String toString(){
